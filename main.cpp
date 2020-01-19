@@ -8,7 +8,7 @@ int main() {
     cout << "Printing 'date'\n";
     cout << date.getDate() << endl;
 
-    cout << "Init 'pers1' and 'pers2' of class Person, 'lab' of class Laboretory\n";
+    cout << "Init 'pers1' and 'pers2' of class Person, 'lab' of class Laboratory\n";
     Person pers1, pers2, pers3;
     Laboratory lab;
     cout << "Creatine 'emp1' and 'emp2' of class Employee with 'pers1' and 'pers2'\n";
