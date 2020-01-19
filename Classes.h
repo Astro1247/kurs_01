@@ -7,6 +7,8 @@
 
 #include <string>
 #include <vector>
+#include "TextTable.h"
+#include <fstream>
 using namespace std;
 
 class Date {
@@ -88,6 +90,9 @@ public:
         this->name = name;
         this->surname = surname;
     }
+    operator string() {
+        return getPerson();
+    }
 };
 
 class PositionNames {
@@ -95,6 +100,47 @@ private:
     int posIndex;
     vector<string> posNames;
 public:
+    void savePosNamesToFile() {
+        ofstream file;
+        file.open("posNames.txt");
+        for (int i = 0; i < posNames.size(); i++) {
+            file << posNames[i] << "\n";
+        }
+        file.close();
+    }
+    void loadPosNamesFromFile() {
+        string line;
+        ifstream file ("posNames.txt");
+        if (file.is_open())
+        {
+            while ( getline (file, line) )
+            {
+                cout << line << '\n';
+            }
+            file.close();
+        }
+    }
+    void printPosNames() {
+        /*printf("__________\n");
+        printf("| N |    pos   |\n");
+        printf("|---|----------|\n");
+        for (int i = 0; i < posNames.size(); i++)
+        {
+            printf("|%d|%c|\n",i,posNames[i].c_str());
+            printf("|---|----------|\n");
+        }*/
+        TextTable t( '-', '|', '+' );
+        t.add( "index" );
+        t.add( "Pos name" );
+        t.endOfRow();
+        for (int i = 0; i < posNames.size(); i++) {
+            t.add(std::to_string(i));
+            t.add(posNames[i]);
+            t.endOfRow();
+        }
+        t.setAlignment( 2, TextTable::Alignment::RIGHT );
+        std::cout << t;
+    }
     vector<string> getPosNames() {
         return posNames;
     }
@@ -114,6 +160,15 @@ public:
         posNames.emplace_back("cтарший науковий співробітник");
         posNames.emplace_back("начальник");
     }
+    string& operator[] (int index) {
+        return posNames[index];
+    }
+};
+
+struct InvalidSalary : public exception {
+    const char * msg () const throw () {
+        return "Invalid employee salary exception (below zero).";
+    }
 };
 
 class Position : public PositionNames {
@@ -124,6 +179,7 @@ public:
         return salary;
     }
     void setSalary(int salary) {
+        if(salary < 0) throw InvalidSalary();
         this->salary = salary;
     }
     Position() {
@@ -164,7 +220,7 @@ public:
         return zavLaboratory;
     }
     vector<Person> getEmployees;
-    void addEmployee(const Person& employee) {
+    void addEmployee(const Employee& employee) {
         Employees.emplace_back(employee);
     }
     int avgSalary() {
