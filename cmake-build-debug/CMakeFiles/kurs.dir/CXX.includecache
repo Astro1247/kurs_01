@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/eth3rial/CLionProjects/kurs_01/Classes.h
+C:/Users/tayni/CLionProjects/kurs_01/Classes.h
 string
 -
 vector
 -
 TextTable.h
-/home/eth3rial/CLionProjects/kurs_01/TextTable.h
+C:/Users/tayni/CLionProjects/kurs_01/TextTable.h
 fstream
 -
 
-/home/eth3rial/CLionProjects/kurs_01/TextTable.h
+C:/Users/tayni/CLionProjects/kurs_01/TextTable.h
 iostream
 -
 map
@@ -28,11 +28,11 @@ vector
 string
 -
 
-/home/eth3rial/CLionProjects/kurs_01/main.cpp
+C:/Users/tayni/CLionProjects/kurs_01/main.cpp
 iostream
 -
 Classes.h
-/home/eth3rial/CLionProjects/kurs_01/Classes.h
+C:/Users/tayni/CLionProjects/kurs_01/Classes.h
 fstream
 -
 

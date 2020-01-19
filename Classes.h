@@ -41,10 +41,10 @@ public:
         this->year = year;
     }
     string getDate() {
-        return to_string(day) + "-" + to_string(month) + "-" + to_string(year);
+        return (to_string(day).length()<2?("0"+to_string(day)):(to_string(day))) + "-" + (to_string(month).length()<2?("0"+to_string(month)):(to_string(month))) + "-" + to_string(year);
     }
     operator string() {
-        return to_string(day) + "-" + to_string(month) + "-" + to_string(year);
+        return getDate();
     }
 };
 
@@ -152,13 +152,13 @@ public:
     }
     PositionNames() {
         posIndex = 0;
-        posNames.emplace_back("Лаборант");
-        posNames.emplace_back("старший лаборант");
-        posNames.emplace_back("інженер");
-        posNames.emplace_back("cтарший інженер");
-        posNames.emplace_back("молодший науковий співробітник");
-        posNames.emplace_back("cтарший науковий співробітник");
-        posNames.emplace_back("начальник");
+        posNames.emplace_back("����࠭�");
+        posNames.emplace_back("���訩 ����࠭�");
+        posNames.emplace_back("i������");
+        posNames.emplace_back("c��訩 i������");
+        posNames.emplace_back("�����訩 ��㪮��� �i�஡i⭨�");
+        posNames.emplace_back("c��訩 ��㪮��� �i�஡i⭨�");
+        posNames.emplace_back("��砫쭨�");
     }
     string& operator[] (int index) {
         return posNames[index];
