@@ -108,7 +108,7 @@ public:
         }
         file.close();
     }
-    void loadPosNamesFromFile() {
+    static void loadPosNamesFromFile() {
         string line;
         ifstream file ("posNames.txt");
         if (file.is_open())
@@ -121,14 +121,6 @@ public:
         }
     }
     void printPosNames() {
-        /*printf("__________\n");
-        printf("| N |    pos   |\n");
-        printf("|---|----------|\n");
-        for (int i = 0; i < posNames.size(); i++)
-        {
-            printf("|%d|%c|\n",i,posNames[i].c_str());
-            printf("|---|----------|\n");
-        }*/
         TextTable t( '-', '|', '+' );
         t.add( "index" );
         t.add( "Pos name" );
